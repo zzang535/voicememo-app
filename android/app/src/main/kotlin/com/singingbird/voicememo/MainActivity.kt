@@ -1,4 +1,4 @@
-package com.example.voicememo_app
+package com.singingbird.voicememo
 
 import io.flutter.embedding.android.FlutterActivity
 
