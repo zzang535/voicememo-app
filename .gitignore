@@ -49,3 +49,6 @@ app.*.map.json
 *.keystore
 upload-keystore.jks
 key.properties
+
+# Environment variables
+.env

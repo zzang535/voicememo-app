@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // .env 파일 로드
+  await dotenv.load(fileName: ".env");
+
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
     overlays: SystemUiOverlay.values,
@@ -96,7 +101,7 @@ class _VoiceMemoWebViewPageState extends State<VoiceMemoWebViewPage> {
         ),
       )
       ..loadRequest(
-        Uri.parse('https://voicememo-three.vercel.app/voicememo'),
+        Uri.parse(dotenv.env['WEBVIEW_URL'] ?? 'https://saynote.singingbird.org'),
       );
   }
 
