@@ -49,7 +49,7 @@ class VoiceMemoWebViewPage extends StatefulWidget {
 }
 
 class _VoiceMemoWebViewPageState extends State<VoiceMemoWebViewPage> {
-  late final WebViewController _controller;
+  WebViewController? _controller;
   bool _isLoading = true;
 
   @override
@@ -103,6 +103,7 @@ class _VoiceMemoWebViewPageState extends State<VoiceMemoWebViewPage> {
       ..loadRequest(
         Uri.parse(dotenv.env['WEBVIEW_URL'] ?? 'https://saynote.singingbird.org'),
       );
+    setState(() {});
   }
 
   @override
@@ -118,15 +119,19 @@ class _VoiceMemoWebViewPageState extends State<VoiceMemoWebViewPage> {
       ),
       child: Scaffold(
         body: SafeArea(
-          child: Stack(
-            children: [
-              WebViewWidget(controller: _controller),
-              if (_isLoading)
-                const Center(
+          child: _controller == null
+              ? const Center(
                   child: CircularProgressIndicator(),
+                )
+              : Stack(
+                  children: [
+                    WebViewWidget(controller: _controller!),
+                    if (_isLoading)
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                  ],
                 ),
-            ],
-          ),
         ),
       ),
     );
