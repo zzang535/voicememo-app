@@ -1,5 +1,5 @@
-name: voicememo_app
-description: "A new Flutter project."
+name: saynote
+description: "세이노트 – 목소리로 쓰는 노트"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -16,7 +16,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.3+4
+version: 1.0.3+5
 
 environment:
   sdk: ^3.9.2
@@ -95,14 +95,17 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: assets/icons/app_icon.png
+  image_path: assets/icons/icon-1024.png
   remove_alpha_ios: true
 
 flutter_native_splash:
   color: "#09090B" # 배경색
-  image: assets/splash/splash_icon.png
+  image: assets/splash/splash-1024.png
+  image_dark: assets/splash/splash-1024.png
+  android_gravity: center
+  ios_content_mode: center
   ios: true
   android: true
   android_12:
     color: "#09090B"
-    image: assets/splash/splash_icon.png
+    image: assets/splash/splash-1024.png
